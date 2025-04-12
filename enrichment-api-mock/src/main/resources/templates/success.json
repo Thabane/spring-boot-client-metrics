@@ -1,0 +1,11 @@
+{
+  "status": "SUCCESS",
+  "data": {
+    "user": {
+      "name": "${name}",
+      "email": "${email}",
+      "id": "usr_${random.uuid}"
+    },
+    "timestamp": "${current.timestamp}"
+  }
+}

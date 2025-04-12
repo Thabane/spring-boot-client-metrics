@@ -1,0 +1,8 @@
+{
+  "status": "ERROR",
+  "error": {
+    "code": "400",
+    "message": "Invalid request for user ${name}",
+    "details": "Email ${email} is not valid"
+  }
+}

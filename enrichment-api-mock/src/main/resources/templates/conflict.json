@@ -1,0 +1,8 @@
+{
+  "status": "CONFLICT",
+  "error": {
+    "code": "409",
+    "message": "Resource already exists",
+    "details": "User with email ${email} already registered"
+  }
+}

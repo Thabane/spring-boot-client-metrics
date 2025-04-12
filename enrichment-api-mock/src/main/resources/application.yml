@@ -1,0 +1,19 @@
+server:
+  port: 8081
+
+external:
+  api:
+    url: https://api.example.com/v1/process
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics
+  metrics:
+    tags:
+      application: example-api
+
+spring:
+  application:
+    name: example-api

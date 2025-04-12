@@ -1,0 +1,57 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'  # Wildcard for all actuator endpoints
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+#      group:
+#        readiness:
+#          include: 'db,diskSpace'  # Specific PostgreSQL health check
+#        liveness:
+#          include: 'diskSpace'
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}
+    enable:
+      # PostgreSQL-specific metrics
+      jdbc: true
+#      jdbc.connections.postgres: true
+      hikaricp: true
+
+      # Wildcards for other categories
+      http.*: true
+      jvm.*: true
+      system.*: true
+      process.*: true
+      logback.*: true
+
+spring:
+  application:
+    name: http-client-demo
+  datasource:
+    hikari:
+      metrics-tracker: true  # Essential for PostgreSQL connection pool metrics
+    platform: postgresql    # Explicitly set to PostgreSQL
+
+info:
+  app:
+#    name: @project.name@
+#    version: @project.version@
+#    description: @project.description@
+
+# Optional HTTP metrics refinement
+management.metrics.distribution:
+  percentiles-histogram.http.server.requests: true
+  percentiles.http.server.requests: 0.5,0.75,0.95,0.99
+  sla.http.server.requests: 100ms,500ms,1s,5s
+
+external:
+  api:
+    url: http://enrichment-api-app:8081/api/process

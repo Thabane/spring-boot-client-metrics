@@ -1,0 +1,8 @@
+{
+  "status": "UNAUTHORIZED",
+  "error": {
+    "code": "401",
+    "message": "Authentication failed",
+    "details": "Invalid credentials for ${email}"
+  }
+}
